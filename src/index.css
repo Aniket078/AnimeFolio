@@ -2,25 +2,216 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .glass {
-    @apply bg-black/40 backdrop-blur-xl border border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.15)];
-  }
+/* ─── Google Fonts already loaded in index.html ─── */
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050008; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #7c3aed, #3b82f6);
+  border-radius: 4px;
 }
+::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+
+/* ─── Base ─── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #090014 0%, #17002e 50%, #050014 100%);
-  background-size: 400% 400%;
-  animation: gradientBG 20s ease infinite;
-  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #050008;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(109,40,217,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(59,130,246,0.08) 0%, transparent 60%);
   color: #e2e8f0;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ─── Selection ─── */
+::selection {
+  background: rgba(168,85,247,0.35);
+  color: #fff;
+}
+
+/* ─── Cursor glow ─── */
+#cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.1s linear;
+}
+
+/* ─── Reusable utility classes ─── */
+@layer components {
+
+  /* Glass card */
+  .glass {
+    background: rgba(10, 0, 20, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(168,85,247,0.18);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  /* Neon heading glow */
+  .glow-text {
+    text-shadow:
+      0 0 10px rgba(168,85,247,0.7),
+      0 0 30px rgba(168,85,247,0.3);
+  }
+
+  .glow-text-blue {
+    text-shadow:
+      0 0 10px rgba(96,165,250,0.7),
+      0 0 30px rgba(96,165,250,0.3);
+  }
+
+  /* Neon outline button */
+  .btn-neon {
+    position: relative;
+    padding: 0.65rem 1.75rem;
+    border-radius: 9999px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #c084fc;
+    background: transparent;
+    border: 1px solid rgba(168,85,247,0.55);
+    box-shadow: 0 0 12px rgba(168,85,247,0.3), inset 0 0 12px rgba(168,85,247,0.06);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    overflow: hidden;
+  }
+  .btn-neon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(59,130,246,0.1));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .btn-neon:hover {
+    color: #fff;
+    border-color: #a855f7;
+    box-shadow: 0 0 22px rgba(168,85,247,0.7), 0 0 50px rgba(168,85,247,0.2), inset 0 0 18px rgba(168,85,247,0.12);
+    transform: translateY(-1px);
+  }
+  .btn-neon:hover::before { opacity: 1; }
+
+  /* Solid gradient button */
+  .btn-solid {
+    padding: 0.65rem 1.9rem;
+    border-radius: 9999px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 18px rgba(124,58,237,0.45), 0 4px 16px rgba(0,0,0,0.4);
+    transition: all 0.25s ease;
+  }
+  .btn-solid:hover {
+    box-shadow: 0 0 30px rgba(124,58,237,0.75), 0 0 60px rgba(59,130,246,0.25);
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  /* Section heading divider */
+  .section-divider {
+    width: 4rem;
+    height: 2px;
+    background: linear-gradient(90deg, #7c3aed, #3b82f6);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(168,85,247,0.7);
+  }
+
+  /* Rank badge */
+  .rank-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 0.2rem 0.7rem;
+    border-radius: 4px;
+    border: 1px solid rgba(168,85,247,0.5);
+    background: rgba(124,58,237,0.15);
+    color: #c084fc;
+    box-shadow: 0 0 8px rgba(168,85,247,0.25);
+  }
+
+  /* Dungeon card */
+  .dungeon-card {
+    background: rgba(10,0,20,0.6);
+    border: 1px solid rgba(168,85,247,0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(168,85,247,0.12);
+    transition: all 0.35s ease;
+  }
+  .dungeon-card:hover {
+    border-color: rgba(168,85,247,0.45);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.7), 0 0 28px rgba(168,85,247,0.3), 0 0 0 1px rgba(168,85,247,0.4);
+    transform: translateY(-4px);
+  }
+
+  /* Stat row */
+  .stat-bar-bg {
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  /* Section label */
+  .sys-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #7c3aed;
+    text-transform: uppercase;
+  }
+}
+
+/* ─── Shimmer keyframe ─── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ─── Scan line for dungeon cards ─── */
+@keyframes scanLine {
+  0%   { top: -2px; }
+  100% { top: 100%; }
+}
+
+/* ─── Level-up flash ─── */
+@keyframes levelFlash {
+  0%   { opacity: 0; transform: scale(0.85) translateY(10px); }
+  20%  { opacity: 1; transform: scale(1.05) translateY(0); }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+.level-up-anim {
+  animation: levelFlash 1.8s ease forwards;
+}
+
+/* ─── Rune background pattern ─── */
+.rune-bg {
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%237c3aed' stroke-width='0.3' opacity='0.15'%3E%3Cpath d='M30 5 L55 50 L5 50 Z'/%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Cpath d='M10 30 L50 30 M30 10 L30 50'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 60px 60px;
 }
