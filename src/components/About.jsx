@@ -117,7 +117,7 @@ const About = () => {
               <span className="sys-label border border-shadow-violet/30 px-2 py-1 rounded bg-shadow-violet/10">Passive / Active</span>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-6">
+             <div className="grid sm:grid-cols-2 gap-6">
               {loading ? (
                 <div className="col-span-2 text-center text-slate-400 font-rajdhani py-8">
                   Synchronizing Skills...
