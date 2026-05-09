@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import animeBoy from "../assets/Animeboy-2.png";
 
 const Hero = () => {
   return (
@@ -69,13 +70,13 @@ const Hero = () => {
           <motion.div
             animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            // className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[450px] bg-shadow-violet/40 blur-[60px] rounded-full z-0"
+          // className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[450px] bg-shadow-violet/40 blur-[60px] rounded-full z-0"
           ></motion.div>
 
           <motion.div
             animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            // className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[400px] bg-shadow-neon/30 blur-[40px] rounded-full z-0"
+          // className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[400px] bg-shadow-neon/30 blur-[40px] rounded-full z-0"
           ></motion.div>
 
           {/* Floating Character Container (Breathing effect) */}
@@ -90,15 +91,19 @@ const Hero = () => {
               <div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-[#020005] via-[#020005]/80 to-transparent z-20 pointer-events-none"></div>
 
               <img
-                src="/src/assets/Animeboy-2.png"
+                src={animeBoy}
                 alt="Shadow Monarch Player"
                 className="relative z-10 max-h-[110%] w-auto object-contain pointer-events-none"
-                style={{ filter: "drop-shadow(0 0 20px rgba(150,80,200,0.8))  drop-shadow(0 0 40px rgba(124,58,237,0.5)) contrast(1.15) brightness(0.9) saturate(1.2)" }}
+                style={{
+                  filter:
+                    "drop-shadow(0 0 20px rgba(150,80,200,0.8)) drop-shadow(0 0 40px rgba(124,58,237,0.5)) contrast(1.15) brightness(0.9) saturate(1.2)",
+                }}
                 onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
+                  e.target.style.display = "none";
+                  e.target.nextSibling.style.display = "flex";
                 }}
               />
+
               {/* Fallback silhouette if image fails */}
               <div className="hidden absolute bottom-0 w-[200px] h-[400px] bg-black rounded-t-full shadow-[0_0_50px_rgba(168,85,247,0.8)] border border-shadow-violet/50 z-10 flex-col justify-center items-center text-center">
                 <span className="font-orbitron text-shadow-neon text-xl font-bold tracking-widest drop-shadow-[0_0_8px_rgba(168,85,247,1)]">MONARCH</span>
