@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:8000'; // Update this to match your Django server URL
+const BASE_URL = 'https://web-production-84447.up.railway.app'; // Update this to match your Django server URL
 
 export const fetchPlayerData = async () => {
   try {
