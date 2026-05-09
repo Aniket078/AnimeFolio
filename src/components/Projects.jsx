@@ -1,30 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import dietPlannerImg from "../assets/Diet_planner.png";
+import webpageImg from "../assets/webpage.png";
 
 const projects = [
   {
     title: "Diet Planner System",
     rank: "S-Rank",
-    description: "A comprehensive health tracking system that generates personalized meal plans and monitors nutrition.",
-    image: "/src/assets/Diet_planner.png",
+    description:
+      "A comprehensive health tracking system that generates personalized meal plans and monitors nutrition.",
+    image: dietPlannerImg,
     tags: ["Python", "Django", "JavaScript"],
-    link: "#"
+    link: "#",
   },
   {
     title: "Shopiket E-Commerce",
     rank: "A-Rank",
-    description: "A full-scale merchant platform allowing seamless transactions, cart management, and product browsing.",
-    image: "/src/assets/webpage.png",
+    description:
+      "A full-scale merchant platform allowing seamless transactions, cart management, and product browsing.",
+    image: webpageImg,
     tags: ["Python", "Django", "JavaScript", "Tailwind"],
-    link: "#"
-  }
+    link: "#",
+  },
 ];
 
 const Projects = () => {
   return (
     <section id="missions" className="relative w-full py-24 px-6 min-h-screen">
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +99,7 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                
+
                 <a href={project.link} className="inline-flex items-center gap-2 font-rajdhani font-bold text-shadow-violet hover:text-shadow-neon transition-colors uppercase tracking-widest text-sm">
                   View Record <span className="text-lg leading-none">→</span>
                 </a>
