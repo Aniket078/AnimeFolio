@@ -1,21 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import dietPlannerImg from "../assets/Diet_planner.png";
+import webpageImg from "../assets/webpage.png";
 
 const projects = [
   {
     title: "Diet Planner",
-    description: "A diet planner that helps users create personalized meal plans, track nutrition, and maintain a healthy lifestyle.",
-    image: "/src/assets/Diet_planner.png",
+    description:
+      "A diet planner that helps users create personalized meal plans, track nutrition, and maintain a healthy lifestyle.",
+    image: dietPlannerImg,
     tags: ["Python", "Django-Framework", "JavaScript"],
-    link: "#"
+    link: "#",
   },
   {
     title: "Shopiket E-Commerce",
-    description: "A simple eCommerce website that allows users to browse products, view details, and add items to a shopping cart.",
-    image: "/src/assets/webpage.png",
+    description:
+      "A simple eCommerce website that allows users to browse products, view details, and add items to a shopping cart.",
+    image: webpageImg,
     tags: ["Python", "Django-Framework", "JavaScript"],
-    link: "#"
-  }
+    link: "#",
+  },
 ];
 
 const ProjectsSection = () => {
